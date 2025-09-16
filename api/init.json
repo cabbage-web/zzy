@@ -1,0 +1,153 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "shouye/home.html"
+  },
+  "logoInfo": {
+    "title": "奥运信息管理",
+    "image": "images/ay.png",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "常规管理",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "首页",
+          "href": "shouye/home.html",
+          "icon": "fa fa-home",
+          "target": "_self"
+        },
+        {
+          "title": "赛事信息",
+          "href": "",
+          "icon": "fa fa-group",
+          "target": "_self",
+          "child": [
+         {
+               "title": "赛程信息",
+               "href": "mkone/ssxx.html",
+               "icon": "fa fa-plus-square-o",
+               "target": "_self"
+             }
+           ]
+         },
+        {
+          "title": "运动员",
+          "href": "",
+          "icon": "fa fa-institution",
+          "target": "_self",
+          "child": [
+         {
+               "title": "个人信息",
+               "href": "mktwo/grxx.html",
+               "icon": "fa fa-plus-square-o",
+               "target": "_self"
+             },  {
+               "title": "个人报名",
+               "href": "mktwo/ydybm.html",
+               "icon": "fa fa-search",
+               "target": "_self"
+             }
+           ]
+         },
+        {
+          "title": "新闻资讯",
+          "href": "",
+          "icon": "fa fa-male",
+          "target": "_self",
+          "child": [
+            {
+              "title": "资讯总览",
+              "href": "mkthree/xwzx.html",
+              "icon": "fa fa-plus-circle",
+              "target": "_self"
+            }, {
+              "title": "上传资讯",
+              "href": "mkthree/sczx.html",
+              "icon": "fa fa-search-plus",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "奖牌榜",
+          "href": "",
+          "icon": "fa fa-trophy",
+          "target": "_self",
+          "child": [
+            {
+              "title": "国家奖牌榜",
+              "href": "mkfour/jpb.html",
+              "icon": "fa fa-plus-square-o",
+              "target": "_self"
+            }, {
+              "title": "运动员个人奖牌榜",
+              "href": "mkfour/ydygr.html",
+              "icon": "fa fa-search",
+              "target": "_self"
+            }
+          ]
+        },
+        
+        
+		{
+		  "title": "场馆管理",
+		  "href": "",
+		  "icon": "fa fa-eye",
+		  "target": "_self",
+		  "child": [
+		    {
+		      "title": "场馆信息",
+		      "href": "mkfive/cgxx.html",
+		      "icon": "fa fa-plus-square-o",
+		      "target": "_self"
+		    }, {
+		      "title": "场馆信息添加",
+		      "href": "mkfive/tjcgxx.html",
+		      "icon": "fa fa-search",
+		      "target": "_self"
+		    }
+		  ]
+		},
+		{
+		  "title": "奥运申办",
+		  "href": "",
+		  "icon": "fa fa-paw",
+		  "target": "_self",
+		  "child": [
+		    {
+		      "title": "添加申办信息",
+		      "href": "mksix/tx.html",
+		      "icon": "fa fa-plus-circle",
+		      "target": "_self"
+		    }, {
+		      "title": "查询申办信息",
+		      "href": "mksix/cx.html",
+		      "icon": "fa fa-search-plus",
+		      "target": "_self"
+		    }
+		  ]
+		},
+		{
+		  "title": "个人中心",
+		  "href": "",
+		  "icon": "fa fa-paw",
+		  "target": "_self",
+		  "child": [
+		    {
+		      "title": "个人信息",
+		      "href": "mkseven/grzy.html",
+		      "icon": "fa fa-plus-circle",
+		      "target": "_self"
+		    }
+		  ]
+		}
+      ]
+    }
+	
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "data": [
+    {
+      "id": 10001,
+      "username": "user-1",
+      "sex": "男",
+      "city": "中国",
+      "sign": "乒乓球",
+      "logins":"1"
+    },
+    {
+      "id": 10002,
+      "username": "user-2",
+      "sex": "女",
+      "city": "美国",
+      "sign": "羽毛球",
+      "logins": "3"
+    },
+    {
+      "id": 10003,
+      "username": "user-3",
+      "sex": "男",
+      "city": "俄罗斯",
+      "sign": "篮球",
+      "logins": "6"
+    },
+    {
+      "id": 10004,
+      "username": "user-4",
+      "sex": "女",
+      "city": "英国",
+      "sign": "游泳",
+      "logins": "7"
+    },
+    {
+      "id": 10005,
+      "username": "user-5",
+      "sex": "男",
+      "city": "法国",
+      "sign": "攀岩",
+      "logins": "5"
+    },
+    {
+      "id": 10006,
+      "username": "user-6",
+      "sex": "女",
+      "city": "德国",
+      "sign": "射击",
+      "logins": "8"
+    },
+    {
+      "id": 10007,
+      "username": "user-7",
+      "sex": "女",
+      "city": "意大利",
+      "sign": "击剑",
+      "logins": "3"
+    },
+    {
+      "id": 10008,
+      "username": "user-8",
+      "sex": "男",
+      "city": "瑞典",
+      "sign": "铅球",
+      "logins": "1"
+    },
+    {
+      "id": 10009,
+      "username": "user-9",
+      "sex": "男",
+      "city": "葡萄牙",
+      "sign": "足球",
+      "logins": "3"
+    },
+    {
+      "id": 10010,
+      "username": "user-10",
+      "sex": "女",
+      "city": "日本",
+      "sign": "举重",
+      "logins": "2"
+    }
+  ]
+}
