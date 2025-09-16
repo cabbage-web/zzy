@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>近20年奥运会运动员奖牌榜</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#FFD700',
+                        silver: '#C0C0C0',
+                        bronze: '#CD7F32',
+                        primary: '#165DFF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .medal-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .edit-btn {
+                @apply bg-primary/10 hover:bg-primary/20 text-primary px-3 py-1 rounded transition-all duration-200;
+            }
+            .save-btn {
+                @apply bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded transition-all duration-200;
+            }
+            .cancel-btn {
+                @apply bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-1 rounded transition-all duration-200;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800">
+                <i class="fa fa-trophy text-gold mr-2"></i>近20年奥运会运动员奖牌榜
+            </h1>
+            <p class="text-gray-500 mt-1">展示近20年奥运会中奖牌总数排名前十的运动员</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="p-4 bg-gray-50 border-b border-gray-200">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div class="text-gray-700 font-medium">
+                        <i class="fa fa-info-circle mr-1"></i> 数据统计范围：2004年雅典奥运会至2024年巴黎奥运会
+                    </div>
+                    <div class="text-sm text-gray-500">
+                        最后更新：2024年8月
+                    </div>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-gray-50 text-left">
+                            <th class="px-6 py-4 text-sm font-semibold text-gray-600 border-b">排名</th>
+                            <th class="px-6 py-4 text-sm font-semibold text-gray-600 border-b">运动员</th>
+                            <th class="px-6 py-4 text-sm font-semibold text-gray-600 border-b">国家/地区</th>
+                            <th class="px-6 py-4 text-sm font-semibold text-gray-600 border-b">
+                                <span class="inline-block w-4 h-4 bg-gold rounded-full mr-1"></span>金牌
+                            </th>
+                            <th class="px-6 py-4 text-sm font-semibold text-gray-600 border-b">
+                                <span class="inline-block w-4 h-4 bg-silver rounded-full mr-1"></span>银牌
+                            </th>
+                            <th class="px-6 py-4 text-sm font-semibold text-gray-600 border-b">
+                                <span class="inline-block w-4 h-4 bg-bronze rounded-full mr-1"></span>铜牌
+                            </th>
+                            <th class="px-6 py-4 text-sm font-semibold text-gray-600 border-b">总计</th>
+                            <th class="px-6 py-4 text-sm font-semibold text-gray-600 border-b">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="medal-table-body">
+                        <!-- 表格内容将通过JavaScript动态生成 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mt-8 bg-white rounded-lg shadow-sm p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">关于榜单</h2>
+            <p class="text-gray-600 mb-3">本榜单统计了2004年至2024年间所有夏季奥运会中获得奖牌总数最多的前十位运动员。</p>
+            <p class="text-gray-600">数据来源包括国际奥委会官方记录及各国家奥委会公布的信息。点击"编辑"按钮可以修改奖牌数量。</p>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center text-gray-400 text-sm">
+                <p>© 2024 奥运奖牌统计 | 仅供演示使用</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 模拟近20年奥运会奖牌榜数据（前十名）
+        const athletes = [
+            {
+                id: 1,
+                name: "迈克尔·菲尔普斯",
+                country: "美国",
+                gold: 23,
+                silver: 3,
+                bronze: 2,
+                sports: "游泳"
+            },
+            {
+                id: 2,
+                name: "拉塞尔·马克",
+                country: "澳大利亚",
+                gold: 5,
+                silver: 2,
+                bronze: 4,
+                sports: "射击"
+            },
+            {
+                id: 3,
+                name: "乌赛因·博尔特",
+                country: "牙买加",
+                gold: 8,
+                silver: 0,
+                bronze: 0,
+                sports: "田径"
+            },
+            {
+                id: 4,
+                name: "凯蒂·莱德基",
+                country: "美国",
+                gold: 7,
+                silver: 3,
+                bronze: 0,
+                sports: "游泳"
+            },
+            {
+                id: 5,
+                name: "西蒙·拜尔斯",
+                country: "美国",
+                gold: 7,
+                silver: 1,
+                bronze: 1,
+                sports: "体操"
+            },
+            {
+                id: 6,
+                name: "克里斯蒂亚诺·罗纳尔多",
+                country: "葡萄牙",
+                gold: 0,
+                silver: 1,
+                bronze: 1,
+                sports: "足球"
+            },
+            {
+                id: 7,
+                name: "罗杰·费德勒",
+                country: "瑞士",
+                gold: 1,
+                silver: 2,
+                bronze: 0,
+                sports: "网球"
+            },
+            {
+                id: 8,
+                name: "孙杨",
+                country: "中国",
+                gold: 3,
+                silver: 1,
+                bronze: 1,
+                sports: "游泳"
+            },
+            {
+                id: 9,
+                name: "迈克尔·乔丹",
+                country: "美国",
+                gold: 2,
+                silver: 0,
+                bronze: 0,
+                sports: "篮球"
+            },
+            {
+                id: 10,
+                name: "马龙",
+                country: "中国",
+                gold: 5,
+                silver: 0,
+                bronze: 0,
+                sports: "乒乓球"
+            }
+        ];
+
+        // 计算奖牌总数
+        athletes.forEach(athlete => {
+            athlete.total = athlete.gold + athlete.silver + athlete.bronze;
+        });
+
+        // 按金牌数排序，金牌相同则按总数排序
+        athletes.sort((a, b) => {
+            if (b.gold !== a.gold) {
+                return b.gold - a.gold;
+            }
+            return b.total - a.total;
+        });
+
+        const tableBody = document.getElementById('medal-table-body');
+
+        // 渲染表格
+        function renderTable() {
+            tableBody.innerHTML = '';
+            
+            athletes.forEach((athlete, index) => {
+                const row = document.createElement('tr');
+                row.className = 'border-b hover:bg-gray-50 transition-colors';
+                row.dataset.id = athlete.id;
+                
+                // 为前三名添加特殊样式
+                let rankClass = '';
+                if (index === 0) rankClass = 'bg-gold/10 font-bold';
+                else if (index === 1) rankClass = 'bg-silver/10 font-bold';
+                else if (index === 2) rankClass = 'bg-bronze/10 font-bold';
+                
+                row.innerHTML = `
+                    <td class="px-6 py-4 ${rankClass}">${index + 1}</td>
+                    <td class="px-6 py-4">
+                        <div class="font-medium">${athlete.name}</div>
+                        <div class="text-sm text-gray-500">${athlete.sports}</div>
+                    </td>
+                    <td class="px-6 py-4">${athlete.country}</td>
+                    <td class="px-6 py-4 medal-count gold-count">${athlete.gold}</td>
+                    <td class="px-6 py-4 medal-count silver-count">${athlete.silver}</td>
+                    <td class="px-6 py-4 medal-count bronze-count">${athlete.bronze}</td>
+                    <td class="px-6 py-4 font-semibold">${athlete.total}</td>
+                    <td class="px-6 py-4">
+                        <button class="edit-btn" onclick="editMedals(${athlete.id})">
+                            <i class="fa fa-pencil mr-1"></i>编辑
+                        </button>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+        }
+
+        // 编辑奖牌数
+        function editMedals(id) {
+            const athlete = athletes.find(a => a.id === id);
+            const row = document.querySelector(`tr[data-id="${id}"]`);
+            
+            // 保存原始数据，用于取消编辑时恢复
+            const originalData = { ...athlete };
+            
+            // 获取奖牌计数单元格
+            const goldCell = row.querySelector('.gold-count');
+            const silverCell = row.querySelector('.silver-count');
+            const bronzeCell = row.querySelector('.bronze-count');
+            const totalCell = row.querySelector('td:nth-child(7)');
+            const actionCell = row.querySelector('td:last-child');
+            
+            // 保存原始内容
+            const originalGold = goldCell.textContent;
+            const originalSilver = silverCell.textContent;
+            const originalBronze = bronzeCell.textContent;
+            
+            // 替换为输入框
+            goldCell.innerHTML = `<input type="number" min="0" value="${athlete.gold}" class="w-16 p-1 border rounded">`;
+            silverCell.innerHTML = `<input type="number" min="0" value="${athlete.silver}" class="w-16 p-1 border rounded">`;
+            bronzeCell.innerHTML = `<input type="number" min="0" value="${athlete.bronze}" class="w-16 p-1 border rounded">`;
+            
+            // 替换操作为保存和取消按钮
+            actionCell.innerHTML = `
+                <button class="save-btn mr-2" onclick="saveMedals(${id})">
+                    <i class="fa fa-check mr-1"></i>保存
+                </button>
+                <button class="cancel-btn" onclick="cancelEdit(${id}, ${originalData.gold}, ${originalData.silver}, ${originalData.bronze})">
+                    <i class="fa fa-times mr-1"></i>取消
+                </button>
+            `;
+        }
+
+        // 保存编辑后的奖牌数
+        function saveMedals(id) {
+            const row = document.querySelector(`tr[data-id="${id}"]`);
+            const athlete = athletes.find(a => a.id === id);
+            
+            // 获取输入框的值
+            const goldInput = row.querySelector('.gold-count input');
+            const silverInput = row.querySelector('.silver-count input');
+            const bronzeInput = row.querySelector('.bronze-count input');
+            
+            // 验证并更新数据
+            const gold = parseInt(goldInput.value) || 0;
+            const silver = parseInt(silverInput.value) || 0;
+            const bronze = parseInt(bronzeInput.value) || 0;
+            
+            athlete.gold = gold;
+            athlete.silver = silver;
+            athlete.bronze = bronze;
+            athlete.total = gold + silver + bronze;
+            
+            // 重新排序并渲染表格
+            athletes.sort((a, b) => {
+                if (b.gold !== a.gold) {
+                    return b.gold - a.gold;
+                }
+                return b.total - a.total;
+            });
+            
+            renderTable();
+        }
+
+        // 取消编辑
+        function cancelEdit(id, gold, silver, bronze) {
+            const row = document.querySelector(`tr[data-id="${id}"]`);
+            
+            // 恢复原始值
+            row.querySelector('.gold-count').textContent = gold;
+            row.querySelector('.silver-count').textContent = silver;
+            row.querySelector('.bronze-count').textContent = bronze;
+            row.querySelector('td:nth-child(7)').textContent = gold + silver + bronze;
+            
+            // 恢复编辑按钮
+            row.querySelector('td:last-child').innerHTML = `
+                <button class="edit-btn" onclick="editMedals(${id})">
+                    <i class="fa fa-pencil mr-1"></i>编辑
+                </button>
+            `;
+        }
+
+        // 初始渲染表格
+        renderTable();
+    </script>
+</body>
+</html>

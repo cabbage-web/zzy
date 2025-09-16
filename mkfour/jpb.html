@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>巴黎奥运会奖牌榜（前十名）</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#FFD700',
+                        silver: '#C0C0C0',
+                        bronze: '#CD7F32',
+                        primary: '#165DFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .gold-bg { background-color: rgba(255, 215, 0, 0.1); }
+            .silver-bg { background-color: rgba(192, 192, 192, 0.1); }
+            .bronze-bg { background-color: rgba(205, 127, 50, 0.1); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold text-gray-800 mb-2">巴黎奥运会奖牌榜</h1>
+            <p class="text-gray-600 text-lg">2024年 · 前十名排名</p>
+        </header>
+        
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <!-- 表头 -->
+            <div class="grid grid-cols-12 bg-primary text-white font-semibold p-4">
+                <div class="col-span-1 text-center">排名</div>
+                <div class="col-span-3">国家/地区</div>
+                <div class="col-span-2 text-center">金牌</div>
+                <div class="col-span-2 text-center">银牌</div>
+                <div class="col-span-2 text-center">铜牌</div>
+                <div class="col-span-2 text-center">总计</div>
+            </div>
+            
+            <!-- 奖牌数据 -->
+            <div id="medalTable" class="divide-y divide-gray-200"></div>
+        </div>
+        
+        <footer class="mt-6 text-center text-gray-500 text-sm">
+            <p>数据来源：参考巴黎奥运会官方奖牌榜</p>
+        </footer>
+    </div>
+
+    <script>
+        // 奖牌榜数据
+        const medalData = [
+            { rank: 1, country: '美国', gold: 40, silver: 44, bronze: 42, total: 126 },
+            { rank: 2, country: '中国', gold: 40, silver: 27, bronze: 24, total: 91 },
+            { rank: 3, country: '日本', gold: 20, silver: 12, bronze: 13, total: 45 },
+            { rank: 4, country: '英国', gold: 20, silver: 21, bronze: 22, total: 63 },
+            { rank: 5, country: '法国', gold: 16, silver: 26, bronze: 22, total: 64 },
+            { rank: 6, country: '德国', gold: 15, silver: 18, bronze: 26, total: 59 },
+            { rank: 7, country: '澳大利亚', gold: 13, silver: 9, bronze: 11, total: 33 },
+            { rank: 8, country: '意大利', gold: 10, silver: 10, bronze: 20, total: 40 },
+            { rank: 9, country: '加拿大', gold: 9, silver: 12, bronze: 17, total: 38 },
+            { rank: 10, country: '荷兰', gold: 9, silver: 6, bronze: 12, total: 27 }
+        ];
+
+        // 生成表格内容
+        const tableContainer = document.getElementById('medalTable');
+        medalData.forEach((country, index) => {
+            let bgClass = '';
+            if (index === 0) bgClass = 'gold-bg';
+            else if (index === 1) bgClass = 'silver-bg';
+            else if (index === 2) bgClass = 'bronze-bg';
+            
+            const row = document.createElement('div');
+            row.className = `grid grid-cols-12 p-4 items-center hover:bg-gray-50 transition-colors ${bgClass}`;
+            
+            row.innerHTML = `
+                <div class="col-span-1 text-center font-medium">${country.rank}</div>
+                <div class="col-span-3">${country.country}</div>
+                <div class="col-span-2 text-center font-semibold text-gold">${country.gold}</div>
+                <div class="col-span-2 text-center font-semibold text-silver">${country.silver}</div>
+                <div class="col-span-2 text-center font-semibold text-bronze">${country.bronze}</div>
+                <div class="col-span-2 text-center font-medium">${country.total}</div>
+            `;
+            
+            tableContainer.appendChild(row);
+        });
+    </script>
+</body>
+</html>
