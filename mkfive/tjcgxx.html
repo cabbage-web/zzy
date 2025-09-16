@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奥运场馆信息添加</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        danger: '#F53F3F',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .form-input {
+                @apply w-full px-3 py-2 border border-gray-300 rounded focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <header class="bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fa fa-building-o text-primary text-xl mr-2"></i>
+                <h1 class="text-xl font-bold">奥运场馆管理</h1>
+            </div>
+            <nav>
+                <ul class="flex space-x-4 text-sm">
+                    <li><a href="#" class="text-primary font-medium"><i class="fa fa-plus mr-1"></i>添加场馆</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-primary">场馆列表</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-6 max-w-3xl">
+        <div class="text-center mb-6">
+            <h2 class="text-2xl font-bold mb-1">添加奥运场馆信息</h2>
+            <p class="text-gray-500 text-sm">请填写以下场馆信息并提交</p>
+        </div>
+        
+        <form id="venueForm" class="bg-white rounded-lg shadow p-5 mb-6">
+            <!-- 基本信息 -->
+            <div class="mb-5">
+                <h3 class="font-semibold mb-3 flex items-center text-gray-700">
+                    <i class="fa fa-info-circle text-primary mr-2"></i>基本信息
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm text-gray-600 mb-1">场馆名称 <span class="text-danger">*</span></label>
+                        <input type="text" required class="form-input" placeholder="例如：国家体育场">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-600 mb-1">所在城市 <span class="text-danger">*</span></label>
+                        <input type="text" required class="form-input" placeholder="例如：北京">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-600 mb-1">场馆类型 <span class="text-danger">*</span></label>
+                        <select required class="form-input">
+                            <option value="">请选择</option>
+                            <option>体育场</option>
+                            <option>体育馆</option>
+                            <option>游泳馆</option>
+                            <option>综合馆</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-600 mb-1">建成年份</label>
+                        <input type="number" class="form-input" placeholder="例如：2008">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 容量与赛事 -->
+            <div class="mb-5">
+                <h3 class="font-semibold mb-3 flex items-center text-gray-700">
+                    <i class="fa fa-trophy text-primary mr-2"></i>容量与赛事
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-sm text-gray-600 mb-1">观众容量 <span class="text-danger">*</span></label>
+                        <input type="number" required class="form-input" placeholder="人数">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-600 mb-1">占地面积</label>
+                        <input type="number" class="form-input" placeholder="平方米">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-600 mb-1">曾举办奥运会</label>
+                        <input type="text" class="form-input" placeholder="例如：2008年北京奥运会">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 设施与描述 -->
+            <div class="mb-5">
+                <h3 class="font-semibold mb-3 flex items-center text-gray-700">
+                    <i class="fa fa-cogs text-primary mr-2"></i>设施与描述
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm text-gray-600 mb-2">主要设施</label>
+                        <div class="space-y-2 text-sm">
+                            <label class="flex items-center"><input type="checkbox" class="mr-2 text-primary">WiFi覆盖</label>
+                            <label class="flex items-center"><input type="checkbox" class="mr-2 text-primary">停车场</label>
+                            <label class="flex items-center"><input type="checkbox" class="mr-2 text-primary">无障碍设施</label>
+                            <label class="flex items-center"><input type="checkbox" class="mr-2 text-primary">餐饮服务</label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-600 mb-2">可举办赛事</label>
+                        <div class="space-y-2 text-sm">
+                            <label class="flex items-center"><input type="checkbox" class="mr-2 text-primary">田径</label>
+                            <label class="flex items-center"><input type="checkbox" class="mr-2 text-primary">足球</label>
+                            <label class="flex items-center"><input type="checkbox" class="mr-2 text-primary">篮球</label>
+                            <label class="flex items-center"><input type="checkbox" class="mr-2 text-primary">游泳</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <label class="block text-sm text-gray-600 mb-1">场馆描述</label>
+                    <textarea rows="3" class="form-input" placeholder="请输入场馆描述..."></textarea>
+                </div>
+            </div>
+            
+            <!-- 提交按钮 -->
+            <div class="flex justify-end space-x-3 pt-2">
+                <button type="reset" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50 transition">
+                    重置
+                </button>
+                <button type="submit" class="px-4 py-2 bg-primary text-white rounded hover:bg-primary/90 transition">
+                    <i class="fa fa-save mr-1"></i>保存信息
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        // 表单提交处理
+        document.getElementById('venueForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // 显示提交成功提示
+            alert('场馆信息添加成功！');
+            // 重置表单
+            this.reset();
+        });
+    </script>
+</body>
+</html>

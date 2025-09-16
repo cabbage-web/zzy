@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>巴黎奥运会场馆信息</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0055A4', // 巴黎奥运会蓝色
+                        secondary: '#FF5800', // 巴黎奥运会橙色
+                        neutral: '#F5F5F5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .table-shadow {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            }
+            .hover-highlight:hover {
+                background-color: rgba(0, 85, 164, 0.05);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- 标题部分 -->
+        <header class="mb-8 text-center">
+            <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-primary mb-2">
+                <i class="fa fa-map-marker mr-2"></i>巴黎奥运会场馆信息
+            </h1>
+            <p class="text-gray-600">2024年巴黎夏季奥运会场馆详细信息</p>
+        </header>
+
+        <!-- 表格容器 -->
+        <div class="overflow-x-auto rounded-lg table-shadow bg-white">
+            <table class="w-full text-left">
+                <!-- 表头 -->
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th class="py-4 px-4 rounded-tl-lg">场馆名称</th>
+                        <th class="py-4 px-4">容量</th>
+                        <th class="py-4 px-4">举办项目</th>
+                        <th class="py-4 px-4">位置</th>
+                        <th class="py-4 px-4">类型</th>
+                        <th class="py-4 px-4 rounded-tr-lg">启用年份</th>
+                    </tr>
+                </thead>
+                
+                <!-- 表体 -->
+                <tbody class="divide-y divide-gray-200">
+                    <!-- 场馆1 -->
+                    <tr class="hover-highlight transition-colors duration-200">
+                        <td class="py-4 px-4 font-medium">法兰西体育场</td>
+                        <td class="py-4 px-4">80,698</td>
+                        <td class="py-4 px-4">开幕式、闭幕式、田径</td>
+                        <td class="py-4 px-4">圣但尼</td>
+                        <td class="py-4 px-4">现有场馆</td>
+                        <td class="py-4 px-4">1998</td>
+                    </tr>
+                    
+                    <!-- 场馆2 -->
+                    <tr class="hover-highlight transition-colors duration-200">
+                        <td class="py-4 px-4 font-medium">巴黎贝尔维尔公园</td>
+                        <td class="py-4 px-4">14,500</td>
+                        <td class="py-4 px-4">篮球</td>
+                        <td class="py-4 px-4">巴黎第20区</td>
+                        <td class="py-4 px-4">临时场馆</td>
+                        <td class="py-4 px-4">2024</td>
+                    </tr>
+                    
+                    <!-- 场馆3 -->
+                    <tr class="hover-highlight transition-colors duration-200">
+                        <td class="py-4 px-4 font-medium">协和广场</td>
+                        <td class="py-4 px-4">10,000</td>
+                        <td class="py-4 px-4">沙滩排球</td>
+                        <td class="py-4 px-4">巴黎第一区</td>
+                        <td class="py-4 px-4">临时场馆</td>
+                        <td class="py-4 px-4">2024</td>
+                    </tr>
+                    
+                    <!-- 场馆4 -->
+                    <tr class="hover-highlight transition-colors duration-200">
+                        <td class="py-4 px-4 font-medium">罗兰·加洛斯球场</td>
+                        <td class="py-4 px-4">15,000</td>
+                        <td class="py-4 px-4">网球、轮椅网球</td>
+                        <td class="py-4 px-4">巴黎第16区</td>
+                        <td class="py-4 px-4">现有场馆</td>
+                        <td class="py-4 px-4">1928</td>
+                    </tr>
+                    
+                    <!-- 场馆5 -->
+                    <tr class="hover-highlight transition-colors duration-200">
+                        <td class="py-4 px-4 font-medium">拉德芳斯体育馆</td>
+                        <td class="py-4 px-4">17,000</td>
+                        <td class="py-4 px-4">体操、艺术体操</td>
+                        <td class="py-4 px-4">巴黎拉德芳斯</td>
+                        <td class="py-4 px-4">新建场馆</td>
+                        <td class="py-4 px-4">2017</td>
+                    </tr>
+                    
+                    <!-- 场馆6 -->
+                    <tr class="hover-highlight transition-colors duration-200">
+                        <td class="py-4 px-4 font-medium">塞纳河</td>
+                        <td class="py-4 px-4">5,000</td>
+                        <td class="py-4 px-4">马拉松游泳、铁人三项</td>
+                        <td class="py-4 px-4">巴黎市中心</td>
+                        <td class="py-4 px-4">现有场地</td>
+                        <td class="py-4 px-4">-</td>
+                    </tr>
+                    
+                    <!-- 场馆7 -->
+                    <tr class="hover-highlight transition-colors duration-200">
+                        <td class="py-4 px-4 font-medium rounded-bl-lg">凡尔赛宫花园</td>
+                        <td class="py-4 px-4">22,000</td>
+                        <td class="py-4 px-4">马术、现代五项</td>
+                        <td class="py-4 px-4">凡尔赛</td>
+                        <td class="py-4 px-4">临时场馆</td>
+                        <td class="py-4 px-4 rounded-br-lg">2024</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- 说明信息 -->
+        <div class="mt-6 text-sm text-gray-500 text-center">
+            <p>数据来源：巴黎奥运会官方网站 </p>
+        </div>
+    </div>
+
+    <!-- 简单的交互效果 -->
+    <script>
+        // 添加表格行点击效果
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('click', () => {
+                // 移除其他行的选中状态
+                document.querySelectorAll('tbody tr').forEach(r => {
+                    r.classList.remove('bg-primary/10');
+                });
+                // 添加当前行的选中状态
+                row.classList.add('bg-primary/10');
+            });
+        });
+    </script>
+</body>
+</html>
