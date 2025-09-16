@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奥运新闻资讯</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0066CC',
+                        olympic: {
+                            blue: '#0052CC',
+                            black: '#333333',
+                            red: '#E63946',
+                            yellow: '#FFC107',
+                            green: '#28A745'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .news-item {
+                @apply bg-white rounded-lg p-4 mb-4 shadow-sm hover:shadow-md transition-shadow duration-300;
+            }
+            .category-tag {
+                @apply text-xs px-2 py-0.5 rounded mr-2;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-6 max-w-5xl">
+        <!-- 标题区域 -->
+        <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center">
+                <div class="flex mr-3">
+                    <span class="block w-6 h-6 border-2 border-olympic-blue rounded-full"></span>
+                    <span class="block w-6 h-6 border-2 border-olympic-black rounded-full -ml-1.5"></span>
+                    <span class="block w-6 h-6 border-2 border-olympic-red rounded-full -ml-1.5"></span>
+                    <span class="block w-6 h-6 border-2 border-olympic-yellow rounded-full -ml-1.5"></span>
+                    <span class="block w-6 h-6 border-2 border-olympic-green rounded-full -ml-1.5"></span>
+                </div>
+                <h1 class="text-xl md:text-2xl font-bold text-gray-800">奥运新闻资讯</h1>
+            </div>
+            
+        </div>
+
+        <!-- 头条新闻 -->
+        <div class="news-item border-l-4 border-primary">
+            <div class="flex items-center text-sm mb-2">
+                <span class="category-tag bg-primary text-white">头条</span>
+                <span class="text-gray-500">2小时前</span>
+            </div>
+            <h2 class="text-lg md:text-xl font-bold mb-2 text-gray-800">开幕式精彩瞬间：文化与体育的完美融合</h2>
+            <p class="text-gray-600 text-sm">本届奥运会开幕式通过创意表演展现了东道主的文化底蕴，各国运动员入场时的友好互动彰显了奥林匹克精神，点燃了全球观众的热情。</p>
+        </div>
+
+        <!-- 新闻列表 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- 新闻2 -->
+            <div class="news-item">
+                <div class="flex items-center text-xs mb-2">
+                    <span class="category-tag border border-olympic-blue text-olympic-blue">游泳</span>
+                    <span class="text-gray-500">5小时前</span>
+                </div>
+                <h3 class="font-bold text-base mb-1 text-gray-800">男子100米自由泳决赛创奥运新纪录</h3>
+                <p class="text-gray-600 text-xs">夺冠选手以46.89秒的成绩打破奥运纪录，这是该国在该项目上获得的首枚奥运金牌，赛后他表示将继续挑战更快速度。</p>
+            </div>
+
+            <!-- 新闻3 -->
+            <div class="news-item">
+                <div class="flex items-center text-xs mb-2">
+                    <span class="category-tag border border-olympic-red text-olympic-red">体操</span>
+                    <span class="text-gray-500">8小时前</span>
+                </div>
+                <h3 class="font-bold text-base mb-1 text-gray-800">女子平衡木决赛上演巅峰对决</h3>
+                <p class="text-gray-600 text-xs">两位名将得分仅差0.1分，最终年轻选手凭借高难度动作和稳定发挥夺得金牌，老将虽获银牌仍赢得全场掌声。</p>
+            </div>
+
+            <!-- 新闻4 -->
+            <div class="news-item">
+                <div class="flex items-center text-xs mb-2">
+                    <span class="category-tag border border-olympic-yellow text-olympic-yellow">篮球</span>
+                    <span class="text-gray-500">12小时前</span>
+                </div>
+                <h3 class="font-bold text-base mb-1 text-gray-800">男篮小组赛：最后时刻绝杀逆转</h3>
+                <p class="text-gray-600 text-xs">在一场关键小组赛中，落后一方在最后3秒投中压哨三分，以1分优势获胜，保留了晋级淘汰赛的希望。</p>
+            </div>
+
+            <!-- 新闻5 -->
+            <div class="news-item">
+                <div class="flex items-center text-xs mb-2">
+                    <span class="category-tag border border-olympic-green text-olympic-green">田径</span>
+                    <span class="text-gray-500">1天前</span>
+                </div>
+                <h3 class="font-bold text-base mb-1 text-gray-800">女子400米栏决赛将上演强强对话</h3>
+                <p class="text-gray-600 text-xs">三位选手在半决赛中均跑出本赛季世界前三好成绩，决赛将成为本届奥运会最受期待的田径赛事之一。</p>
+            </div>
+
+            <!-- 新闻6 -->
+            <div class="news-item">
+                <div class="flex items-center text-xs mb-2">
+                    <span class="category-tag border border-olympic-black text-olympic-black">乒乓球</span>
+                    <span class="text-gray-500">1天前</span>
+                </div>
+                <h3 class="font-bold text-base mb-1 text-gray-800">混双决赛：卫冕冠军惊险晋级</h3>
+                <p class="text-gray-600 text-xs">卫冕冠军组合在1-2落后的情况下连扳两局，最终以3-2险胜对手，成功晋级决赛，距离卫冕仅一步之遥。</p>
+            </div>
+
+            <!-- 新闻7 -->
+            <div class="news-item">
+                <div class="flex items-center text-xs mb-2">
+                    <span class="category-tag bg-gray-100 text-gray-700">赛事花絮</span>
+                    <span class="text-gray-500">2天前</span>
+                </div>
+                <h3 class="font-bold text-base mb-1 text-gray-800">奥运村成文化交流平台，运动员互赠纪念品</h3>
+                <p class="text-gray-600 text-xs">各国运动员在奥运村友好互动，交换带有本国特色的纪念品，展现了"更快、更高、更强、更团结"的奥林匹克精神。</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+    

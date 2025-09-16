@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奥运新闻上传</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#FF7D00',
+                        neutral: '#F5F7FA',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .form-input-focus {
+                @apply focus:ring-2 focus:ring-primary/50 focus:border-primary;
+            }
+            .btn-hover {
+                @apply hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+        <header class="mb-8 text-center">
+            <div class="inline-flex items-center justify-center bg-primary text-white rounded-full w-16 h-16 mb-4">
+                <i class="fa fa-newspaper-o text-3xl"></i>
+            </div>
+            <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-gray-800 mb-2">奥运新闻上传</h1>
+            <p class="text-gray-500">请填写以下信息发布最新奥运新闻</p>
+        </header>
+
+        <form id="newsForm" class="bg-white rounded-xl shadow-md p-6 md:p-8 transition-all duration-300 hover:shadow-lg">
+            <!-- 新闻标题 -->
+            <div class="mb-5">
+                <label for="title" class="block text-gray-700 font-medium mb-2">
+                    <i class="fa fa-header text-primary mr-2"></i>新闻标题
+                </label>
+                <input type="text" id="title" name="title" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input-focus outline-none"
+                    placeholder="请输入新闻标题">
+            </div>
+
+            <!-- 新闻分类 -->
+            <div class="mb-5">
+                <label for="category" class="block text-gray-700 font-medium mb-2">
+                    <i class="fa fa-tags text-primary mr-2"></i>新闻分类
+                </label>
+                <select id="category" name="category" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input-focus outline-none">
+                    <option value="">请选择分类</option>
+                    <option value="opening">开幕式</option>
+                    <option value="closing">闭幕式</option>
+                    <option value="competition">赛事报道</option>
+                    <option value="medal">奖牌榜</option>
+                    <option value="athlete">运动员专访</option>
+                    <option value="other">其他</option>
+                </select>
+            </div>
+
+            <!-- 相关项目 -->
+            <div class="mb-5">
+                <label for="sport" class="block text-gray-700 font-medium mb-2">
+                    <i class="fa fa-futbol-o text-primary mr-2"></i>相关项目
+                </label>
+                <select id="sport" name="sport" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input-focus outline-none">
+                    <option value="">请选择项目</option>
+                    <option value="athletics">田径</option>
+                    <option value="swimming">游泳</option>
+                    <option value="gymnastics">体操</option>
+                    <option value="basketball">篮球</option>
+                    <option value="football">足球</option>
+                    <option value="tennis">网球</option>
+                    <option value="other">其他项目</option>
+                </select>
+            </div>
+
+            <!-- 新闻来源 -->
+            <div class="mb-5">
+                <label for="source" class="block text-gray-700 font-medium mb-2">
+                    <i class="fa fa-link text-primary mr-2"></i>新闻来源
+                </label>
+                <input type="text" id="source" name="source" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input-focus outline-none"
+                    placeholder="例如：新华社、央视体育等">
+            </div>
+
+            <!-- 新闻内容 -->
+            <div class="mb-6">
+                <label for="content" class="block text-gray-700 font-medium mb-2">
+                    <i class="fa fa-file-text-o text-primary mr-2"></i>新闻内容
+                </label>
+                <textarea id="content" name="content" rows="10" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input-focus outline-none resize-none"
+                    placeholder="请输入详细新闻内容..."></textarea>
+                <p class="text-xs text-gray-500 mt-1">请确保内容真实准确，符合新闻报道规范</p>
+            </div>
+
+            <!-- 发布按钮 -->
+            <div class="flex justify-end gap-4">
+                <button type="reset" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 btn-hover">
+                    <i class="fa fa-refresh mr-1"></i>重置
+                </button>
+                <button type="submit" class="px-6 py-2 bg-primary text-white rounded-lg btn-hover">
+                    <i class="fa fa-paper-plane mr-1"></i>发布新闻
+                </button>
+            </div>
+        </form>
+
+        <footer class="mt-10 text-center text-gray-500 text-sm">
+            <p>© 2024 奥运新闻管理系统 | 内容发布规范</p>
+        </footer>
+    </div>
+
+    <script>
+        // 表单提交处理
+        document.getElementById('newsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 简单验证和提示
+            const title = document.getElementById('title').value;
+            if (title.trim().length < 5) {
+                alert('新闻标题不能少于5个字符');
+                return;
+            }
+            
+            const content = document.getElementById('content').value;
+            if (content.trim().length < 50) {
+                alert('新闻内容不能少于50个字符');
+                return;
+            }
+            
+            // 模拟提交成功
+            alert('新闻发布成功！');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

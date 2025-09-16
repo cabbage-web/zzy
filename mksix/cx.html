@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奥运会承办国家</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#FF7D00',
+                        neutral: '#F5F7FA',
+                        dark: '#1D2129',
+                        future: '#8B5CF6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .table-shadow {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            }
+            .hover-highlight:hover {
+                background-color: rgba(22, 93, 255, 0.05);
+            }
+            .future-highlight {
+                background-color: rgba(139, 92, 246, 0.03);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-dark">
+    <div class="container mx-auto px-4 py-8 max-w-5xl">
+        <!-- 页面标题 -->
+        <header class="mb-8 text-center">
+            <h1 class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold text-dark mb-2">奥运会承办国家</h1>
+        </header>
+
+        <!-- 表格控制区 -->
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+            <div class="flex items-center space-x-2">
+                <button id="all-btn" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition">全部</button>
+                <button id="summer-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition">夏季</button>
+                <button id="winter-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition">冬季</button>
+            </div>
+            <div class="relative w-full sm:w-auto">
+                <input type="text" id="search-input" placeholder="搜索国家或年份..." 
+                       class="pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 w-full sm:w-64">
+                <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            </div>
+        </div>
+
+        <!-- 表格容器 -->
+        <div class="overflow-x-auto rounded-lg table-shadow bg-white">
+            <table class="w-full min-w-full">
+                <thead>
+                    <tr class="bg-neutral text-left">
+                        <th class="px-6 py-4 font-semibold text-gray-700">年份</th>
+                        <th class="px-6 py-4 font-semibold text-gray-700">类型</th>
+                        <th class="px-6 py-4 font-semibold text-gray-700">主办城市</th>
+                        <th class="px-6 py-4 font-semibold text-gray-700">主办国家/地区</th>
+                        <th class="px-6 py-4 font-semibold text-gray-700">参赛国家数</th>
+                        <th class="px-6 py-4 font-semibold text-gray-700">参赛运动员数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 2012年伦敦奥运会 -->
+                    <tr class="border-t border-gray-100 hover-highlight transition summer">
+                        <td class="px-6 py-4">2012</td>
+                        <td class="px-6 py-4"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">夏季</span></td>
+                        <td class="px-6 py-4">伦敦</td>
+                        <td class="px-6 py-4">英国</td>
+                        <td class="px-6 py-4">204</td>
+                        <td class="px-6 py-4">10,568</td>
+                    </tr>
+                    
+                    <!-- 2014年索契冬奥会 -->
+                    <tr class="border-t border-gray-100 hover-highlight transition winter">
+                        <td class="px-6 py-4">2014</td>
+                        <td class="px-6 py-4"><span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">冬季</span></td>
+                        <td class="px-6 py-4">索契</td>
+                        <td class="px-6 py-4">俄罗斯</td>
+                        <td class="px-6 py-4">88</td>
+                        <td class="px-6 py-4">2,873</td>
+                    </tr>
+                    
+                    <!-- 2016年里约奥运会 -->
+                    <tr class="border-t border-gray-100 hover-highlight transition summer">
+                        <td class="px-6 py-4">2016</td>
+                        <td class="px-6 py-4"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">夏季</span></td>
+                        <td class="px-6 py-4">里约热内卢</td>
+                        <td class="px-6 py-4">巴西</td>
+                        <td class="px-6 py-4">207</td>
+                        <td class="px-6 py-4">11,238</td>
+                    </tr>
+                    
+                    <!-- 2018年平昌冬奥会 -->
+                    <tr class="border-t border-gray-100 hover-highlight transition winter">
+                        <td class="px-6 py-4">2018</td>
+                        <td class="px-6 py-4"><span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">冬季</span></td>
+                        <td class="px-6 py-4">平昌</td>
+                        <td class="px-6 py-4">韩国</td>
+                        <td class="px-6 py-4">92</td>
+                        <td class="px-6 py-4">2,922</td>
+                    </tr>
+                    
+                    <!-- 2020年东京奥运会 -->
+                    <tr class="border-t border-gray-100 hover-highlight transition summer">
+                        <td class="px-6 py-4">2020</td>
+                        <td class="px-6 py-4"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">夏季</span></td>
+                        <td class="px-6 py-4">东京</td>
+                        <td class="px-6 py-4">日本</td>
+                        <td class="px-6 py-4">206</td>
+                        <td class="px-6 py-4">11,656</td>
+                    </tr>
+                    
+                    <!-- 2022年北京冬奥会 -->
+                    <tr class="border-t border-gray-100 hover-highlight transition winter">
+                        <td class="px-6 py-4">2022</td>
+                        <td class="px-6 py-4"><span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">冬季</span></td>
+                        <td class="px-6 py-4">北京</td>
+                        <td class="px-6 py-4">中国</td>
+                        <td class="px-6 py-4">91</td>
+                        <td class="px-6 py-4">2,871</td>
+                    </tr>
+                    
+                    <!-- 2024年巴黎奥运会 -->
+                    <tr class="border-t border-gray-100 hover-highlight transition summer">
+                        <td class="px-6 py-4">2024</td>
+                        <td class="px-6 py-4"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">夏季</span></td>
+                        <td class="px-6 py-4">巴黎</td>
+                        <td class="px-6 py-4">法国</td>
+                        <td class="px-6 py-4">206</td>
+                        <td class="px-6 py-4">10,500+</td>
+                    </tr>
+
+                    <!-- 2026年米兰-科尔蒂纳丹佩佐冬奥会 -->
+                    <tr class="border-t border-gray-100 hover-highlight transition winter">
+                        <td class="px-6 py-4">2026</td>
+                        <td class="px-6 py-4"><span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">冬季</span></td>
+                        <td class="px-6 py-4">米兰-科尔蒂纳丹佩佐</td>
+                        <td class="px-6 py-4">意大利</td>
+                        <td class="px-6 py-4">预计90+</td>
+                        <td class="px-6 py-4">预计3,000+</td>
+                    </tr>
+
+                    <!-- 2028年洛杉矶奥运会 -->
+                    <tr class="border-t border-gray-100 hover-highlight transition summer future-highlight">
+                        <td class="px-6 py-4">2028</td>
+                        <td class="px-6 py-4"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">夏季</span></td>
+                        <td class="px-6 py-4">洛杉矶</td>
+                        <td class="px-6 py-4">美国</td>
+                        <td class="px-6 py-4">预计200+</td>
+                        <td class="px-6 py-4">预计11,000+</td>
+                    </tr>
+
+                    <!-- 2030年萨格勒布-萨拉热窝冬奥会 -->
+                    <tr class="border-t border-gray-100 hover-highlight transition winter future-highlight">
+                        <td class="px-6 py-4">2030</td>
+                        <td class="px-6 py-4"><span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">冬季</span></td>
+                        <td class="px-6 py-4">萨格勒布-萨拉热窝</td>
+                        <td class="px-6 py-4">克罗地亚-波斯尼亚和黑塞哥维那</td>
+                        <td class="px-6 py-4">预计90+</td>
+                        <td class="px-6 py-4">预计3,000+</td>
+                    </tr>
+
+                    <!-- 2032年布里斯班奥运会 -->
+                    <tr class="border-t border-gray-100 hover-highlight transition summer future-highlight">
+                        <td class="px-6 py-4">2032</td>
+                        <td class="px-6 py-4"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">夏季</span></td>
+                        <td class="px-6 py-4">布里斯班</td>
+                        <td class="px-6 py-4">澳大利亚</td>
+                        <td class="px-6 py-4">预计200+</td>
+                        <td class="px-6 py-4">预计11,000+</td>
+                    </tr>
+
+                    <!-- 2034年冬奥会 -->
+                    <tr class="border-t border-gray-100 hover-highlight transition winter future-highlight">
+                        <td class="px-6 py-4">2034</td>
+                        <td class="px-6 py-4"><span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">冬季</span></td>
+                        <td class="px-6 py-4">盐湖城</td>
+                        <td class="px-6 py-4">美国</td>
+                        <td class="px-6 py-4">预计90+</td>
+                        <td class="px-6 py-4">预计3,000+</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 图例说明 -->
+        <div class="mt-4 flex flex-wrap gap-4 text-sm text-gray-600">
+            <div class="flex items-center">
+                <span class="w-3 h-3 bg-purple-100 rounded-sm mr-2"></span>
+                <span>未来赛事</span>
+            </div>
+            <div class="flex items-center">
+                <span class="w-3 h-3 bg-green-100 rounded-sm mr-2"></span>
+                <span>夏季奥运会</span>
+            </div>
+            <div class="flex items-center">
+                <span class="w-3 h-3 bg-blue-100 rounded-sm mr-2"></span>
+                <span>冬季奥运会</span>
+            </div>
+        </div>
+        <footer class="mt-8 text-center text-gray-500 text-sm">
+            <p>数据来源：国际奥林匹克委员会</p>
+        </footer>
+    </div>
+
+    <script>
+        // 筛选功能实现
+        document.addEventListener('DOMContentLoaded', function() {
+            const allBtn = document.getElementById('all-btn');
+            const summerBtn = document.getElementById('summer-btn');
+            const winterBtn = document.getElementById('winter-btn');
+            const searchInput = document.getElementById('search-input');
+            const rows = document.querySelectorAll('tbody tr');
+            
+            // 按钮点击事件 - 筛选夏季/冬季奥运会
+            allBtn.addEventListener('click', () => {
+                rows.forEach(row => row.classList.remove('hidden'));
+                updateButtonStyles(allBtn, summerBtn, winterBtn);
+            });
+            
+            summerBtn.addEventListener('click', () => {
+                rows.forEach(row => {
+                    if (row.classList.contains('summer')) {
+                        row.classList.remove('hidden');
+                    } else {
+                        row.classList.add('hidden');
+                    }
+                });
+                updateButtonStyles(summerBtn, allBtn, winterBtn);
+            });
+            
+            winterBtn.addEventListener('click', () => {
+                rows.forEach(row => {
+                    if (row.classList.contains('winter')) {
+                        row.classList.remove('hidden');
+                    } else {
+                        row.classList.add('hidden');
+                    }
+                });
+                updateButtonStyles(winterBtn, allBtn, summerBtn);
+            });
+            
+            // 搜索功能
+            searchInput.addEventListener('input', () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                rows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        row.classList.remove('hidden');
+                    } else {
+                        row.classList.add('hidden');
+                    }
+                });
+            });
+            
+            // 更新按钮样式
+            function updateButtonStyles(activeBtn, ...inactiveBtns) {
+                activeBtn.classList.remove('bg-gray-200', 'text-gray-700');
+                activeBtn.classList.add('bg-primary', 'text-white');
+                
+                inactiveBtns.forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-white');
+                    btn.classList.add('bg-gray-200', 'text-gray-700');
+                });
+            }
+            
+            // 添加表格行动画效果
+            rows.forEach(row => {
+                row.style.transition = 'all 0.2s ease-in-out';
+            });
+        });
+    </script>
+</body>
+</html>

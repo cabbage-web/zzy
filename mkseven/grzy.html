@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奥运信息管理系统 - 个人主页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0066CC',
+                        secondary: '#FFD700',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-primary text-white py-3">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fa fa-flag-o text-secondary mr-2"></i>
+                <span class="font-bold">奥运信息管理系统</span>
+            </div>
+            <div class="flex space-x-4">
+                <a href="#" class="hover:text-secondary"><i class="fa fa-home"></i></a>
+                <a href="#" class="hover:text-secondary"><i class="fa fa-calendar"></i></a>
+                <a href="#" class="text-secondary"><i class="fa fa-user"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-6">
+        <!-- 用户信息 -->
+        <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+            <div class="flex items-center">
+                <img src="../images/zzy.png" alt="用户头像" class="w-20 h-20 rounded-full border-2 border-white shadow-sm">
+                <div class="ml-4">
+                    <h2 class="font-bold text-lg">cabbage</h2>
+                    <p class="text-gray-600 text-sm"><i class="fa fa-map-marker text-primary mr-1"></i>中国 - 北京</p>
+                    <div class="flex mt-2 space-x-2">
+                        <span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded">奥运志愿者</span>
+                        <span class="bg-secondary/20 text-gray-700 text-xs px-2 py-1 rounded">田径爱好者</span>
+                    </div>
+                </div>
+                <button class="ml-auto bg-primary text-white text-sm px-3 py-1 rounded">编辑资料</button>
+            </div>
+        </div>
+
+        <!-- 内容区 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- 左侧统计 -->
+            <div class="md:col-span-1">
+                <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                    <h3 class="font-medium mb-3 flex items-center">
+                        <i class="fa fa-bar-chart text-primary mr-1"></i> 个人统计
+                    </h3>
+                    <div class="grid grid-cols-2 gap-2 text-center">
+                        <div class="bg-gray-50 p-2 rounded">
+                            <p class="text-xs text-gray-500">关注赛事</p>
+                            <p class="font-bold text-primary">12</p>
+                        </div>
+                        <div class="bg-gray-50 p-2 rounded">
+                            <p class="text-xs text-gray-500">收藏新闻</p>
+                            <p class="font-bold text-primary">28</p>
+                        </div>
+                        <div class="bg-gray-50 p-2 rounded">
+                            <p class="text-xs text-gray-500">预测次数</p>
+                            <p class="font-bold text-primary">45</p>
+                        </div>
+                        <div class="bg-gray-50 p-2 rounded">
+                            <p class="text-xs text-gray-500">正确率</p>
+                            <p class="font-bold text-primary">68%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧内容 -->
+            <div class="md:col-span-2">
+                <!-- 关注赛事 -->
+                <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="font-medium">关注的赛事</h3>
+                        <a href="#" class="text-primary text-sm">全部</a>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="border-l-2 border-primary pl-3 py-1">
+                            <div class="flex justify-between">
+                                <span class="font-medium text-sm">男子100米决赛</span>
+                                <span class="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">明天 19:30</span>
+                            </div>
+                            <p class="text-xs text-gray-500">田径 - 奥林匹克体育场</p>
+                        </div>
+                        <div class="border-l-2 border-red-500 pl-3 py-1">
+                            <div class="flex justify-between">
+                                <span class="font-medium text-sm">女子自由泳接力</span>
+                                <span class="text-xs bg-red-50/10 text-red-500 px-2 py-0.5 rounded">后天 10:15</span>
+                            </div>
+                            <p class="text-xs text-gray-500">游泳 - 水上运动中心</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 最近活动 -->
+                <div class="bg-white rounded-lg shadow-sm p-4">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="font-medium">最近活动</h3>
+                        <a href="#" class="text-primary text-sm">更多</a>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <p><i class="fa fa-star-o text-primary mr-1"></i>收藏了文章《东京奥运会精彩瞬间》 <span class="text-xs text-gray-400">2小时前</span></p>
+                        <p><i class="fa fa-comment-o text-gray-500 mr-1"></i>评论了赛事《女子体操团体决赛》 <span class="text-xs text-gray-400">昨天</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center text-xs py-4 mt-6">
+        <p>© 2024 奥运信息管理系统</p>
+    </footer>
+</body>
+</html>
+    
