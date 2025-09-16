@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奥林匹克登录</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #005bb5, #00a651, #ef3340, #ffd100);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        
+        @keyframes gradient {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+        
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            width: 350px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            margin: 0 0 20px;
+            font-size: 28px;
+            color: #ffd700;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .login-btn {
+            background-color: #ffd700;
+            color: #000;
+            border: none;
+            padding: 12px 20px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .login-btn:hover {
+            background-color: #ffc000;
+            transform: translateY(-2px);
+        }
+        
+        .guest-btn {
+            background-color: transparent;
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            padding: 10px 20px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 15px;
+        }
+        
+        .guest-btn:hover {
+            background-color: rgba(255, 215, 0, 0.1);
+        }
+        
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .rings {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .ring {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 5px;
+            border: 4px solid;
+        }
+        
+        .blue { border-color: #0085c7; }
+        .yellow { border-color: #f4c300; }
+        .black { border-color: #000; }
+        .green { border-color: #009f3d; }
+        .red { border-color: #df0024; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="rings">
+            <div class="ring blue"></div>
+            <div class="ring black"></div>
+            <div class="ring red"></div>
+            <div class="ring yellow"></div>
+            <div class="ring green"></div>
+        </div>
+        
+        
+        <h1>奥运信息管理系统</h1>
+        
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">用户名</label>
+                <input type="text" id="username" placeholder="输入您的用户名">
+            </div>
+            
+            <div class="input-group">
+                <label for="password">密码</label>
+                <input type="password" id="password" placeholder="输入您的密码">
+            </div>
+            
+            <button type="button" class="login-btn" id="loginButton">登录</button>
+            
+            <button type="button" class="guest-btn">访客访问</button>
+        </form>
+        
+        <div class="footer">
+            
+        </div>
+    </div>
+    
+    <script>
+        // 只有点击登录按钮才会跳转
+        document.getElementById('loginButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+        
+        // 移除了自动跳转功能
+    </script>
+</body>
+</html>

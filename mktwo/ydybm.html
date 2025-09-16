@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>运动员报名表单</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						colors: {
+							primary: '#165DFF',
+							secondary: '#36CFC9',
+							accent: '#FF7D00',
+							dark: '#1D2129',
+							light: '#F2F3F5'
+						},
+						fontFamily: {
+							inter: ['Inter', 'system-ui', 'sans-serif'],
+						},
+					}
+				}
+			}
+		</script>
+		<style type="text/tailwindcss">
+			@layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .form-input-focus {
+                @apply focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none;
+            }
+            .section-transition {
+                @apply transition-all duration-300 ease-in-out;
+            }
+        }
+    </style>
+	</head>
+	<body class="font-inter bg-gray-50 text-dark min-h-screen">
+		<header class="bg-gradient-to-r from-primary to-primary/80 text-white shadow-lg">
+			<div class="container mx-auto px-4 py-6 md:py-8">
+				<div class="flex flex-col md:flex-row justify-between items-center">
+					<div class="flex items-center mb-4 md:mb-0">
+						<i class="fa fa-trophy text-3xl md:text-4xl mr-3 text-accent"></i>
+						<h1 class="text-2xl md:text-3xl font-bold">运动员报名系统</h1>
+					</div>
+					
+				</div>
+			</div>
+		</header>
+		<main class="container mx-auto px-4 py-8 md:py-12">
+			<div class="max-w-3xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+				<div class="bg-light p-6 border-b border-gray-100">
+					<h2 class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-dark">运动员参赛报名表</h2>
+					<p class="text-gray-600 mt-2">请填写以下信息完成报名，带 <span class="text-red-500">*</span> 为必填项</p>
+				</div>
+				<form id="athleteForm" class="p-6 md:p-8 space-y-8">
+					<section class="section-transition">
+						<div class="flex items-center mb-6">
+							<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+								<i class="fa fa-user text-primary"></i>
+							</div>
+							<h3 class="text-xl font-semibold">个人基本信息</h3>
+						</div>
+
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+							<div>
+								<label for="fullname" class="block text-sm font-medium text-gray-700 mb-1">
+									姓名 <span class="text-red-500">*</span>
+								</label>
+								<input type="text" id="fullname" name="fullname" required
+									class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input-focus"
+									placeholder="请输入您的姓名">
+							</div>
+
+							<div>
+								<label for="gender" class="block text-sm font-medium text-gray-700 mb-1">
+									性别 <span class="text-red-500">*</span>
+								</label>
+								<div class="flex space-x-4">
+									<label class="inline-flex items-center">
+										<input type="radio" name="gender" value="male" required
+											class="w-4 h-4 text-primary focus:ring-primary">
+										<span class="ml-2 text-gray-700">男</span>
+									</label>
+									<label class="inline-flex items-center">
+										<input type="radio" name="gender" value="female"
+											class="w-4 h-4 text-primary focus:ring-primary">
+										<span class="ml-2 text-gray-700">女</span>
+									</label>
+								</div>
+							</div>
+
+							<div>
+								<label for="birthdate" class="block text-sm font-medium text-gray-700 mb-1">
+									出生日期 <span class="text-red-500">*</span>
+								</label>
+								<input type="date" id="birthdate" name="birthdate" required
+									class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input-focus">
+							</div>
+
+							<div>
+								<label for="phone" class="block text-sm font-medium text-gray-700 mb-1">
+									联系电话 <span class="text-red-500">*</span>
+								</label>
+								<input type="tel" id="phone" name="phone" required
+									class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input-focus"
+									placeholder="请输入手机号码">
+							</div>
+
+							<div class="md:col-span-2">
+								<label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+									电子邮箱
+								</label>
+								<input type="email" id="email" name="email"
+									class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input-focus"
+									placeholder="请输入电子邮箱（选填）">
+							</div>
+							<div class="md:col-span-2">
+								<label for="address" class="block text-sm font-medium text-gray-700 mb-1">
+									居住地址
+								</label>
+								<input type="text" id="address" name="address"
+									class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input-focus"
+									placeholder="请输入居住地址（选填）">
+							</div>
+						</div>
+					</section>
+					<section class="section-transition pt-6 border-t border-gray-100">
+						<div class="flex items-center mb-6">
+							<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+								<i class="fa fa-running text-primary"></i>
+							</div>
+							<h3 class="text-xl font-semibold">运动项目信息</h3>
+						</div>
+
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+							<div>
+								<label for="sportType" class="block text-sm font-medium text-gray-700 mb-1">
+									运动类别 <span class="text-red-500">*</span>
+								</label>
+								<select id="sportType" name="sportType" required
+									class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input-focus">
+									<option value="">请选择运动类别</option>
+									<option value="track">田径</option>
+									<option value="swimming">游泳</option>
+									<option value="basketball">篮球</option>
+									<option value="football">足球</option>
+									<option value="volleyball">排球</option>
+									<option value="tableTennis">乒乓球</option>
+									<option value="badminton">羽毛球</option>
+									<option value="tennis">网球</option>
+									<option value="other">其他</option>
+								</select>
+							</div>
+
+							<div>
+								<label for="worldRanking" class="block text-sm font-medium text-gray-700 mb-1">
+									世界排名
+								</label>
+								<input type="number" id="worldRanking" name="worldRanking" min="1"
+									class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input-focus"
+									placeholder="请输入当前世界排名（选填）">
+							</div>
+						</div>
+					</section>
+					<section class="section-transition pt-6 border-t border-gray-100">
+						<div class="flex items-center mb-6">
+							<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+								<i class="fa fa-heartbeat text-primary"></i>
+							</div>
+							<h3 class="text-xl font-semibold">健康信息</h3>
+						</div>
+
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+							<div>
+								<label for="healthCondition" class="block text-sm font-medium text-gray-700 mb-1">
+									健康状况 <span class="text-red-500">*</span>
+								</label>
+								<select id="healthCondition" name="healthCondition" required
+									class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input-focus">
+									<option value="">请选择健康状况</option>
+									<option value="excellent">优秀，无任何不适宜运动的疾病</option>
+									<option value="good">良好，可参加正常体育活动</option>
+									<option value="general">一般，有轻微不适但不影响运动</option>
+									<option value="special">有特殊健康状况（请在下方说明）</option>
+								</select>
+							</div>
+
+							<div>
+								<label for="healthNotes" class="block text-sm font-medium text-gray-700 mb-1">
+									健康状况说明
+								</label>
+								<input type="text" id="healthNotes" name="healthNotes"
+									class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input-focus"
+									placeholder="如有特殊健康状况，请在此说明（选填）">
+							</div>
+						</div>
+					</section>
+					<section class="section-transition pt-6 border-t border-gray-100">
+						<div class="flex items-center mb-6">
+							<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+								<i class="fa fa-info-circle text-primary"></i>
+							</div>
+							<h3 class="text-xl font-semibold">确认信息</h3>
+						</div>
+
+						<div class="space-y-6">
+							<div>
+								<label class="flex items-start">
+									<input type="checkbox" id="agreement" name="agreement" required
+										class="mt-1 w-4 h-4 text-primary focus:ring-primary">
+									<span class="ml-2 text-sm text-gray-700">
+										我已阅读并同意<a href="#" class="text-primary hover:underline">《参赛须知》</a>和<a href="#"
+											class="text-primary hover:underline">《免责声明》</a>，并保证所填写信息真实有效 <span
+											class="text-red-500">*</span>
+									</span>
+								</label>
+							</div>
+						</div>
+					</section>
+
+					<!-- 提交按钮 -->
+					<div class="pt-6 border-t border-gray-100 flex flex-col sm:flex-row justify-center gap-4">
+						<button type="reset"
+							class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors duration-200 w-full sm:w-auto">
+							<i class="fa fa-refresh mr-2"></i>重置
+						</button>
+						<button type="submit"
+							class="px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-200 shadow-md hover:shadow-lg w-full sm:w-auto font-medium">
+							<i class="fa fa-check-circle mr-2"></i>提交报名
+						</button>
+					</div>
+				</form>
+			</div>
+		</main>
+		<div id="successModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+			<div class="bg-white rounded-xl p-8 max-w-md w-full mx-4 transform transition-all scale-95">
+				<div class="text-center">
+					<div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+						<i class="fa fa-check text-2xl text-green-500"></i>
+					</div>
+					<h3 class="text-xl font-bold mb-2">报名成功！</h3>
+					<p class="text-gray-600 mb-6">您的报名信息已提交成功，我们将尽快与您联系确认。</p>
+					<button id="closeModal"
+						class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+						确定
+					</button>
+				</div>
+			</div>
+		</div>
+		<script>
+			// 表单提交处理
+			document.getElementById('athleteForm').addEventListener('submit', function(e) {
+				e.preventDefault();
+
+				// 显示成功弹窗
+				const modal = document.getElementById('successModal');
+				modal.classList.remove('hidden');
+
+				// 添加动画效果
+				setTimeout(() => {
+					modal.querySelector('div').classList.add('scale-100');
+					modal.querySelector('div').classList.remove('scale-95');
+				}, 10);
+			});
+
+			// 关闭弹窗
+			document.getElementById('closeModal').addEventListener('click', function() {
+				const modal = document.getElementById('successModal');
+				modal.querySelector('div').classList.add('scale-95');
+				modal.querySelector('div').classList.remove('scale-100');
+
+				setTimeout(() => {
+					modal.classList.add('hidden');
+					// 重置表单
+					document.getElementById('athleteForm').reset();
+				}, 300);
+			});
+
+			// 手机号验证
+			document.getElementById('phone').addEventListener('blur', function() {
+				const phone = this.value;
+				const phonePattern = /^[0-9]{11}$/;
+				if (phone && !phonePattern.test(phone)) {
+					alert('请输入有效的手机号码');
+				
+				}
+			});
+		</script>
+	</body>
+</html>
